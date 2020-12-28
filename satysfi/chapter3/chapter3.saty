@@ -1,0 +1,130 @@
+@require: stdjareport
+
+let-inline \new-word it =
+{\dfn{#it;}}
+
+let-inline \Cde = 
+{ともあれ、カタルゴは滅ぶべきであると考える次第である。}
+
+let-block +pCde t = '<
+	+p{
+		#t;
+		\Cde;
+	}
+>
+
+let-inline \show-int n = embed-string (arabic n)
+let-inline \show-float x = embed-string (show-float x)
+let-inline \show-string s = embed-string s
+let-inline \satysfi = 
+{\SATySFi;}
+
+let to-dollar m-yen = 
+	let rate = 112.73 in
+		(float m-yen) /. rate
+
+let div-rem m n =
+	(m / n, m mod n)
+
+let make-exceed n q = 
+	match div-rem n q with
+	| (m, 0) -> m
+	| (m, _) -> m + 1
+
+let shift-x len point =
+	let (x, y) = point in
+	(x +' len, y)
+
+type geometry =
+	| Rectangle of (length * length) * (length * length)
+	| Circle    of (length * length) * length
+
+let pi = 3.141592
+
+let length-abs len = 
+	if len <' 0pt then 0pt -' len else len
+
+let area geom =
+	match geom with
+		| Rectangle((x1, y1), (x2, y2)) ->
+			let w = (length-abs (x1 -' x2) /' 1cm) in
+			let h = (length-abs (y1 -' y2) /' 1cm) in
+				w *. h
+		| Circle(_, r) ->
+			let rf = r /' 1cm in
+				rf *. rf *. pi
+
+let-rec fact n =
+	if n <= 0 then 1 else n * fact(n - 1)
+
+let div-safe m n =
+	if n == 0 then None else Some(m/n)
+
+let from-option d opt = 
+	match opt with None -> d | Some(v) -> v
+
+% 'aは多相型を意味する。いわゆるテンプレートのこと。
+type 'a bin-tree =
+	| Empty | Node of 'a * 'a bin-tree * 'a bin-tree
+
+let-rec show-tree pr tr =
+	match tr with
+	| Empty -> `_`
+	| Node(x, trL, trR) ->
+		`(` ^ (pr x) ^ #` `# ^
+		(show-tree pr trL) ^ #` `# ^ (show-tree pr trR) ^ `)`
+
+let-rec list-length l =
+	match l with
+	| [] -> 0
+	| x::xs -> 1 + list-length xs
+
+let-rec list-append l1 l2 =
+	match l1 with
+	| [] -> l2
+	| x::xs -> x::list-append xs l2
+
+let list-reverse l =
+	let-rec aux acc l =
+		match l with
+		| [] -> acc
+		| x::xs -> aux (x::acc) xs
+in
+aux[] l
+in
+document(|
+	title={Chapter.3 コマンド定義};
+	author={mokeshi3};
+|) '<
+	+chapter{はじめてのコマンド定義}<
+		+p{
+			\SATySFi;ではじめての\new-word{コマンド定義}です。\Cde;
+		}
+
+		+pCde{
+			自分でブロックコマンドを定義することもできます。
+		}
+
+		+p{
+			\satysfi;は函数型らしい特徴として式と値を区別しているところがある。
+			\align[
+				${|
+					40 + 2 = 
+				|};
+			];
+			\show-int(40+2);
+		}
+
+		+p{
+			函数を定義することもできる。円をドルに変換する函数の動作例を示す。
+			10000円は\show-float(to-dollar 10000);ドルである。
+		}
+
+		+p{Answer:
+		\show-float(area (Rectangle((1cm, 2.4cm), (-3cm, 10cm))));}
+
+		+p{Answer: \show-float(area (Circle((5cm, 0cm), 2cm)));}
+
+		+p{Answer: \show-int(fact 6);}
+	>
+>

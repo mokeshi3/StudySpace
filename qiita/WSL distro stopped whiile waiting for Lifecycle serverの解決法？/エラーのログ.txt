@@ -1,0 +1,24 @@
+WSL distro stopped while waiting for Lifecycle server.
+  >Stdout:
+
+  >Stderr:
+2020/08/27 02:10:49 resolving /mnt/host/c/Program Files/Docker/Docker/resources/wsl/docker-wsl-cli.iso...
+Error: mounting wslCLIDest: stat /mnt/host/c/Program Files/Docker/Docker/resources/wsl/docker-wsl-cli.iso: no such file or directory
+2020/08/27 02:10:49 stat /mnt/host/c/Program Files/Docker/Docker/resources/wsl/docker-wsl-cli.iso: no such file or directory
+mounting wslCLIDest
+main.doRun
+	/go/src/github.com/docker/pinata/linuxkit/pkg/wsl-bootstrap/main.go:224
+main.run.func1
+	/go/src/github.com/docker/pinata/linuxkit/pkg/wsl-bootstrap/main.go:83
+github.com/docker/pinata/vendor/github.com/spf13/cobra.(*Command).execute
+	/go/src/github.com/docker/pinata/vendor/github.com/spf13/cobra/command.go:762
+github.com/docker/pinata/vendor/github.com/spf13/cobra.(*Command).ExecuteC
+	/go/src/github.com/docker/pinata/vendor/github.com/spf13/cobra/command.go:852
+github.com/docker/pinata/vendor/github.com/spf13/cobra.(*Command).Execute
+	/go/src/github.com/docker/pinata/vendor/github.com/spf13/cobra/command.go:800
+main.main
+	/go/src/github.com/docker/pinata/linuxkit/pkg/wsl-bootstrap/main.go:25
+runtime.main
+	/usr/local/go/src/runtime/proc.go:203
+runtime.goexit
+	/usr/local/go/src/runtime/asm_amd64.s:1357

@@ -1,0 +1,52 @@
+@require: stdjareport
+@require: itemize
+
+document (|
+    title = {サンプル文書};
+    author = {粗 組版太郎};
+|) '<
+    +chapter{はじめての章}<
+        +p{
+			明日は明日の風が吹く。
+        }
+
+		+p{
+			原稿とデザインにしたがって活字や図版を配置して
+			版面を構成することを総称して\dfn{組版処理}と呼ぶ。
+		}
+
+		+p{
+			文中での数式は${E = m c^2}、 ${F = G \frac{m_1 m_2}{r-2}}のように、\LaTeX; と同様に書く。
+			インラインコマンドを使うことで\LaTeX;と同じように書くことができる。
+
+			行別の式は
+			\eqn(${
+				\int_a^b \frac{\ordd x}{\sqrt{x^2 + 1}}
+				= \sqbracket{ \log \paren{x + \sqrt{x^2 + 1}}}_a^b
+			});
+			のように書く。
+		}
+		+p{
+			箇条書きは
+			\listing{
+				* こ
+				** の
+				* よ
+				** う
+				** に
+			}
+			書く。
+		}
+		+p{
+			定理環境の例を以下に示す。
+		}
+		+theorem{theorem}
+		+lemma{lemma}
+		+definition{definition}
+		+corollary{corollary}
+		+example{example}
+		+p{
+			脚注は\footnote{脚注}と書く。
+		}
+    >
+>
