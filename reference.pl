@@ -19,3 +19,9 @@ print "%$rhash\n";
 my $ra = \('a', 'b', 'c');    # This reference is for scaler.
 print "@$rarray[2]\n";
 print "$rarray->[2]\n";
+
+# no name reference
+my @nonamearray = [123, 456, 789];
+my $nonamehash = {"a" => 1, "b" => 2, "c" => 3};
+print "@nonamearray\n";
+print "%nonamehash\n";
