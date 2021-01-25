@@ -2,7 +2,7 @@
 use strict;
 
 my $scaler = 1;
-my @array = (10, 20);
+my @array = (10, 20, 30, 40);
 my %hash = ("laurel" => "hardy", "nick" => "nora");
 
 # reference
@@ -17,4 +17,5 @@ print "%$rhash\n";
 
 # array reference
 my $ra = \('a', 'b', 'c');    # This reference is for scaler.
-print "$$ra\n";
+print "@$rarray[2]\n";
+print "$rarray->[2]\n";
