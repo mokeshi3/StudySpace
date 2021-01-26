@@ -5,10 +5,10 @@ use warnings;
 $test = "";
 
 while($arg = shift @ARGV) {
-	if ($arg =~ /-D(\w+)=(\w+)/) {
+	if ($arg =~ /-D(\w+)=(\w+)/) { # $testに-Dtest=***の***を代入する。
 		$var_name = $1;
 		$value = $2;
-		$$var_name = $value; # $1の名前の変数に$2の値を代入する。
+		$$var_name = $value;
 	}
 }
 
