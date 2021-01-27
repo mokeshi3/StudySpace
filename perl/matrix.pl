@@ -2,7 +2,7 @@
 use strict;
 use warnings;
 
-sub matrix_read_file()
+sub matrix_read_file
 {
 	my ($filename) = @_;
 	my $matrix_name;
@@ -18,4 +18,24 @@ sub matrix_read_file()
 			push (@{$matrix_name}, \@row);
 		}
 	}
+}
+
+sub matrix_multiple
+{
+	my ($r_mat1, $r_mat2) = @_;
+	my ($r_product);
+	my ($r1, $c1) = matrix_count_rows_cols ($r_mat1);
+	my ($r2, $c2) = matrix_count_rows_cols ($r_mat2);
+	die "Matrix 1 has $c1 columns and matrix 2 has $r2 rows."
+		. "Connot multiply\n" unless ($c1 == $r2);
+	for(my $i = 0; $i < $c2;$i++) {
+		for(my $j = 0;$j < $c1;$j++) {
+			my $sum = 0;
+			for(my $k = 0;$k < $c1;$k++) {
+				$sum += $r_mat1->[$i][$k] * $r_mat2->[$k][$j];
+			}
+			$r_product->[$i][$j] = $sum;
+		}
+	}
+	$r_product;
 }
