@@ -1,0 +1,1 @@
+{"version":3,"vars":[{"name":"strict","containerName":"","kind":2,"line":1},{"containerName":null,"name":"$scaler","line":4,"kind":13},{"containerName":null,"name":"@foo","line":6,"kind":13},{"name":"%password","containerName":null,"kind":13,"line":8}]}

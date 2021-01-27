@@ -1,0 +1,1 @@
+{"vars":[{"containerName":null,"name":"$number","line":2,"kind":13},{"kind":13,"line":3,"containerName":null,"name":"$number"},{"line":5,"kind":13,"name":"%number","containerName":null}],"version":3}
