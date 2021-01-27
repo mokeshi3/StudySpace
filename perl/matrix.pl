@@ -39,3 +39,10 @@ sub matrix_multiple
 	}
 	$r_product;
 }
+
+sub matrix_count_rows_cols {
+	my ($r_mat) = @_;
+	my $num_rows = @$r_mat;
+	my $num_cols = @{$r_mat->[0]};
+	($num_rows, $num_cols);
+}
