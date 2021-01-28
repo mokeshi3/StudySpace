@@ -30,3 +30,14 @@ sub print_all_entries_for_year {
 		print_entries_for_year($year);
 	}
 }
+
+sub print_entry {
+	my ($year, $category) = @_;
+	foreach $rlEntry (@{$year_index{$year}}) {
+		if($rlEntry->[1] eq $category) {
+			print "$category ($year), ", $rlEntry->[2], "\n";
+			return;
+		}
+	}
+	print "No entry for $category ($year) \n";
+}
