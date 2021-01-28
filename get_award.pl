@@ -24,3 +24,9 @@ sub print_entries_for_year {
 		print ("\t", $rlEntry->[1], " : ", $rlEntry->[2], "\n");
 	}
 }
+
+sub print_all_entries_for_year {
+	foreach $year (sort keys %year_index) {
+		print_entries_for_year($year);
+	}
+}
